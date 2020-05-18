@@ -1,6 +1,6 @@
 A place to keep hard-to-remember app and system settings for my personal setup.
 
-Especially useful tools for music (requires FFMPEG and SOX):
+Especially useful tools for music (requires FFmpeg and SoX):
 - `norns` - SSH into Monome Norns
 - `processDirSamples` - batch processes all audio files within subdirectories to 44100hz and with some headroom.
 - `processCurrentDirSample` - same as above but just for current directory
