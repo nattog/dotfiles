@@ -4,19 +4,13 @@
 ZSH_DISABLE_COMPFIX=true
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/guypurssell/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
+export DOTFILES=$HOME/dotfiles
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
+
+# Set name of the theme to load ---
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -72,16 +66,13 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git nvm)
+plugins=(git zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -98,83 +89,14 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Shortcuts
-alias d="cd ~/Desktop"
-alias dl="cd ~/Downloads"
-alias p="cd ~/Projects"
-alias g="git"
-alias h="history"
-alias ex="cd ~/External"
-
-# Easier navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
-
-# Git shortcuts
-alias gs="git status"
-alias gu="git fetch && git rebase"
-alias gc="git commit -am"
-alias gca="git commit --amend"
-alias gp="git push -u origin HEAD"
-alias ga="git add --all ."
-alias gg="git checkout"
-alias gb="git checkout -b"
-alias gm="git merge"
-alias gr="git rebase"
-alias gls="git branch"
-alias grm="git branch -D"
+# Load the shell dotfiles, and then some:
+# * ~/.mix-path can be used to extend `$PATH`.
+# * ~/.mix-extra can be used for other settings you don’t want to commit to your repo.
+source $HOME/dotfiles/.mix-exports
+source $HOME/dotfiles/.mix-aliases
+source $HOME/dotfiles/.mix-exports
 
 
-# Gerrit shit
-alias gru="git fetch origin && git rebase origin/develop"
-alias grp="git push origin HEAD:refs/for/develop%notify=NONE || true"
-
-alias nrd="npm run dev"
-alias nrb="npm run build"
-
-
-alias norns="cd ~ && sshfs we@norns.local:/home/we norns"
-alias unnorns="sudo diskutil unmount force /Users/guypurssell/norns"
-
-
-# FFMPEG / SOX tools 
-alias flac2wav='for i in *.flac; do ffmpeg -i "$i" "${i%.*}.wav"; done'
-
-alias processDirSamples='baseDir="${PWD##*/}_44100" && mkdir ../"$baseDir" && for d in */ ; do
-    (cd "$d" && mkdir converted && for i in *.{wav,aif}; do sox "$i" converted/"${i%.*}.wav" gain -3 rate -L -s 44100; done && mv converted ../../"$baseDir"/"${PWD##*/}");
-done'
-
-alias processCurrentDirSamples='mkdir ../"${PWD##*/}_44100" && for i in *.{wav,aif}; do sox "$i" ../"${PWD##*/}_44100"/"${i%.*}.wav" gain -3 rate -L -s 44100; done'
-
-alias johncage='ffmpeg -f lavfi -i anullsrc=r=44100:cl=stereo -t 273 -q:a 9 -acodec libmp3lame johncage.mp3'
-
-function cd() { builtin cd "$@" && ls; }
-
-function ssha() { eval `ssh-agent` && ssh-add "$@"; }
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH=~/bin:$PATH:~/Library/Python/3.8/bin:$PATH
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/guypurssell/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/guypurssell/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/guypurssell/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/guypurssell/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-
-export PATH=/Applications/Imagination/PVRTexTool/CLI/OSX_x86/PVRTexToolCLI:$PATH
-
-export TOKTX_PATH="/usr/local/bin/toktx"
 
 
 
