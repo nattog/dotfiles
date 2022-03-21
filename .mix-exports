@@ -1,0 +1,5 @@
+# --- EXPORTS --------------------------
+
+# Prefer British English and UTF-8
+export LANG="en_GB"
+export LC_ALL="en_GB.UTF-8"

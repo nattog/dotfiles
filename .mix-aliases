@@ -1,0 +1,60 @@
+# --- ALIASES --------------------------
+
+alias sshkey="cat ~/.ssh/id_ed25519.pub | pbcopy && echo 'Copied to clipboard.'"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Shortcuts
+alias d="cd ~/Desktop"
+alias dl="cd ~/Downloads"
+alias p="cd ~/Projects"
+alias g="git"
+alias h="history"
+alias ex="cd ~/External"
+
+# Easier navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# Git shortcuts
+alias gs="git status"
+alias gu="git fetch && git rebase"
+alias gc="git commit -am"
+alias gca="git commit --amend"
+alias gp="git push -u origin HEAD"
+alias ga="git add --all ."
+alias gg="git checkout"
+alias gb="git checkout -b"
+alias gm="git merge"
+alias gr="git rebase"
+alias gls="git branch"
+alias grm="git branch -D"
+
+# npm commands
+alias nrd="npm run dev"
+alias nrb="npm run build"
+
+# norns
+alias norns="cd ~ && sshfs we@norns.local:/home/we norns"
+alias unnorns="sudo diskutil unmount force /Users/guypurssell/norns"
+
+# FFMPEG / SOX tools 
+alias flac2wav='for i in *.flac; do ffmpeg -i "$i" "${i%.*}.wav"; done'
+
+alias processDirSamples='baseDir="${PWD##*/}_44100" && mkdir ../"$baseDir" && for d in */ ; do
+    (cd "$d" && mkdir converted && for i in *.{wav,aif}; do sox "$i" converted/"${i%.*}.wav" gain -3 rate -L -s 44100; done && mv converted ../../"$baseDir"/"${PWD##*/}");
+done'
+
+alias processCurrentDirSamples='mkdir ../"${PWD##*/}_44100" && for i in *.{wav,aif}; do sox "$i" ../"${PWD##*/}_44100"/"${i%.*}.wav" gain -3 rate -L -s 44100; done'
+
+alias johncage='ffmpeg -f lavfi -i anullsrc=r=44100:cl=stereo -t 273 -q:a 9 -acodec libmp3lame johncage.mp3'
