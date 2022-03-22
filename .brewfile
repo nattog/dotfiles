@@ -1,0 +1,27 @@
+# Brewfile
+
+
+update
+upgrade
+
+brew "cmake"
+brew "dfu-util"
+brew "git"
+brew "git-lfs"
+brew "ffmpeg"
+brew "imagemagick"
+brew "sox"
+brew "svgo"
+
+cask "ableton-live-suite"
+cask "caffeine"
+cask "cycling74-max"
+cask "discord"
+cask "macfuse"
+cask "signal"
+cask "slack"
+cask "the-unarchiver"
+cask "visual-studio-code"
+cask "vlc"
+
+cleanup

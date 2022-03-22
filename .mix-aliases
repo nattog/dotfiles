@@ -40,6 +40,9 @@ alias gr="git rebase"
 alias gls="git branch"
 alias grm="git branch -D"
 
+# Github gist
+alias gist="gh gist"
+
 # npm commands
 alias nrd="npm run dev"
 alias nrb="npm run build"
