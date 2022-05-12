@@ -36,3 +36,6 @@ function extract() {
         echo "'$1' is not a valid file"
     fi
 }
+
+# Create gapless m4a loop from wav file input
+function gapless() { afconvert -s 3 -f mp4f -d aac "$1".wav -o "$1".m4a; }
