@@ -1,4 +1,4 @@
-Includes especially handy tools for music (requires FFmpeg and SoX):
+Includes especially handy tools for music (requires FFmpeg, afconvert, SoX):
 - `norns` - SSHFS into Monome Norns
 - `processDirSamples` - batch processes all audio files within subdirectories to 44100hz and with some headroom.
 - `processCurrentDirSample` - same as above but just for current directory
