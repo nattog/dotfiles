@@ -61,3 +61,6 @@ done'
 alias processCurrentDirSamples='mkdir ../"${PWD##*/}_44100" && for i in *.{wav,aif}; do sox "$i" ../"${PWD##*/}_44100"/"${i%.*}.wav" gain -3 rate -L -s 44100; done'
 
 alias johncage='ffmpeg -f lavfi -i anullsrc=r=44100:cl=stereo -t 273 -q:a 9 -acodec libmp3lame johncage.mp3'
+
+alias cosign='codesign --sign - --force --deep'
+alias quar='xattr -d com.apple.quarantine'

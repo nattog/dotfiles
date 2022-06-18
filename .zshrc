@@ -95,6 +95,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/dotfiles/.mix-exports
 source $HOME/dotfiles/.mix-aliases
 source $HOME/dotfiles/.mix-exports
+source $HOME/dotfiles/.mix-builtins
 
 
 
