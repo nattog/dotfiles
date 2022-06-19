@@ -39,3 +39,19 @@ function extract() {
 
 # Create gapless m4a loop from wav file input
 function gapless() { afconvert -s 3 -f mp4f -d aac "$1".wav -o "$1".m4a; }
+
+# Convert flac to aiff and resample to 48000 if greater than/equal to 96000
+function flac2aiff() {
+  for i in *.flac; do 
+    RATE="$(soxi -r $i)"
+
+    if [ $RATE -ge 96000 ]
+    then
+      echo Resampling and converting... 
+      ffmpeg -i "$i" -write_id3v2 1 -ar 48000 -c:v copy "${i%.*}.aiff";
+    else
+      echo Converting...
+      ffmpeg -i "$i" -write_id3v2 1 -c:v copy "${i%.*}.aiff";
+    fi
+  done
+}
