@@ -17,6 +17,7 @@ alias p="cd ~/Projects"
 alias g="git"
 alias h="history"
 alias ex="cd ~/External"
+alias nnn="cd /Volumes/dust"
 
 # Easier navigation
 alias ..="cd .."
@@ -48,8 +49,7 @@ alias nrd="npm run dev"
 alias nrb="npm run build"
 
 # norns
-alias norns="cd ~ && sshfs we@norns.local:/home/we norns"
-alias unnorns="sudo diskutil unmount force /Users/guypurssell/norns"
+alias norns="open 'smb://norns.local'"
 
 # FFMPEG / SOX tools 
 alias flac2wav='for i in *.flac; do ffmpeg -i "$i" "${i%.*}.wav"; done'
